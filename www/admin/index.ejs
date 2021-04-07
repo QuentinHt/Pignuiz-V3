@@ -3,8 +3,21 @@
 
 <main>
     <h1><%- data.data.givenName %></h1>
-    <h1><%- data.data.familyName %></h1>
-    
+    <section class="flexBox">
+        <div id="newQuizz">
+            <h2>Nouveau Quizz</h2>
+            <form action="/admin/create" method="POST" class="flexBox flexColumn">
+                <label for="title">Titre</label>
+                <input type="text" name="title" required minlength="5">
+
+                <label for="theme">Thématique</label>
+                <input type="text" name="theme" required minlength="5">
+
+                <button type="submit">Créer</button>
+            </form>
+        </div>
+        <div id="oldQuizz"></div>
+    </section>    
 </main>
 
 <!-- Importer le footer en EJS -->
