@@ -29,6 +29,12 @@ class BackendRouter {
                 .catch(apiError => renderErrorVue('index', req, res, apiError, 'Request failed'))
         })
 
+        this.router.get('/admin', this.passport.authenticate('jwt', { session: false, failureRedirect: '/login' }), (req, res) => {
+            Controllers.user.readOne(req.user.id)
+                .then(apiResponse => renderSuccessVue('admin/', req, res, apiResponse, 'Request succeed', false))
+                .catch(apiError => renderErrorVue('admin/', req, res, apiError, 'Request failed'))
+        })
+
         this.router.get('/erreur', (req, res) => {
             renderErrorVue('error', req, res, null, 'Request failed')
         })
