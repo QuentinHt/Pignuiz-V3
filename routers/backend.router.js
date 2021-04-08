@@ -112,6 +112,22 @@ class BackendRouter {
             }
         })
 
+        this.router.post('/admin/create', (req, res) => {
+
+            // Check body data
+            if (typeof req.body === 'undefined' || req.body === null || Object.keys(req.body).length === 0) {
+                return renderErrorVue('error', req, res, 'No data provided', 'Request failed')
+            }
+            else {
+
+                // Check body data
+                const { ok, extra, miss } = checkFields(Mandatory.register, req.body);
+
+                // Error: bad fields provided
+                    renderSuccessVue('admin/create', req, res, req.body, 'Request succeed', false)
+            }
+        })
+
         // [BACKOFFICE] get data from client to create object, protected by Passport MiddleWare
         this.router.post('/:endpoint', this.passport.authenticate('jwt', { session: false, failureRedirect: '/' }), (req, res) => {
             // Check body data
