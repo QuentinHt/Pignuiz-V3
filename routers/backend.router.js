@@ -112,7 +112,7 @@ class BackendRouter {
             }
         })
 
-        this.router.post('/admin/create', (req, res) => {
+        this.router.post('/admin/create', this.passport.authenticate('jwt', { session: false, failureRedirect: '/login' }), (req, res) => {
 
             // Check body data
             if (typeof req.body === 'undefined' || req.body === null || Object.keys(req.body).length === 0) {
@@ -124,7 +124,9 @@ class BackendRouter {
                 const { ok, extra, miss } = checkFields(Mandatory.register, req.body);
 
                 // Error: bad fields provided
-                    renderSuccessVue('admin/create', req, res, req.body, 'Request succeed', false)
+                Controllers.user.readOne(req.user.id)
+                .then(apiResponse => renderSuccessVue('admin/create', req, res, [req.body,apiResponse], 'Request succeed', false))
+                .catch(apiError => renderErrorVue('admin/create', req, res, apiError, 'Request failed'))
             }
         })
 
