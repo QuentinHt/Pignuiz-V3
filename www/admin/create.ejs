@@ -2,8 +2,23 @@
 <%- include('../statics/header') -%>
 
 <main>
-        <h1><%- data.data[1].givenName %></h1>
-        <h1><%- data.data[0].title %></h1>
+    <section id="createQuizz">
+            <h1>Nouveau quizz : <%- data.data[0].title %></h1>
+            <h2>Question <span>1</span></h2>
+
+            <form action="">
+                    <ul class="questionType">
+                            <li>
+                                <input type="radio" id="petitBac" name="typeQuestion" />
+                                <label for="petitBac">Petit Bac</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="text" name="typeQuestion" />
+                                <label for="text">Texte</label>
+                            </li>
+                        </ul>
+            </form>
+    </section>
 </main>
 
 <!-- Importer le footer en EJS -->

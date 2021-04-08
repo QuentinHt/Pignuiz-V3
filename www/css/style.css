@@ -1,6 +1,16 @@
+@import 'admin/style.css';
+
 /* 
 Reset
 */
+
+h1{
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1;
+    margin: 0;
+    width: 100%;
+}
     /* :root{
         --main-color: red
     }
