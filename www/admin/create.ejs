@@ -6,20 +6,25 @@
             <h1>Nouveau quizz : <%- data.data[0].title %></h1>
             <h2>Question <span>1</span></h2>
 
-            <form action="">
+            <form action="" name="formQuizz">
                     <ul class="questionType">
                             <li>
-                                <input type="radio" id="petitBac" name="typeQuestion" />
+                                    <input type="radio" id="text" name="typeQuestion" value="1" checked='checked'/>
+                                    <label for="text">Texte</label>
+                                </li>
+                            <li>
+                                <input type="radio" id="petitBac" name="typeQuestion" value="2"/>
                                 <label for="petitBac">Petit Bac</label>
                             </li>
-                            <li>
-                                <input type="radio" id="text" name="typeQuestion" />
-                                <label for="text">Texte</label>
-                            </li>
                         </ul>
+                        <div class="questions">
+                                <%- include('questions/text') -%>  
+                                <%- include('questions/petitBac') -%>  
+                        </div>
             </form>
     </section>
 </main>
+<script src="/scripts/admin/app.js"></script>
 
 <!-- Importer le footer en EJS -->
 <%- include('../statics/footer') -%>  
