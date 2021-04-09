@@ -139,6 +139,8 @@ class BackendRouter {
                 // Check body data
                 const { ok, extra, miss } = checkFields(Mandatory.register, req.body);
 
+                // Add author _id
+                req.body.author = req.user._id;
                 // Error: bad fields provided
                 Controllers.quizz.createOne(req)
                 .then(apiResponse => renderSuccessVue('admin/', req, res, [req.body,apiResponse], 'Request succeed', false))
