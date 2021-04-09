@@ -4,9 +4,13 @@
     background-color: rgb(20,20,20);
     padding: 20px;
 }
-
+#createQuizz > h1 {
+    line-height: 40px;
+    margin: 5px 0
+}
 #createQuizz > h2 {
-    text-align: center
+    text-align: center;
+    margin: 5px 0
 }
 
 #createQuizz .questionType {
@@ -32,6 +36,7 @@
    left:0;
    right:0;
    bottom:0;
+   cursor: pointer
 }
 
 #createQuizz .questionType input[type="radio"] {
@@ -56,4 +61,18 @@
 
 #createQuizz .questionType label:hover {
     background:#999;
+}
+
+#createQuizz .sendQuizz {
+    float: right;
+    padding: 20px;
+    width: 100px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+#createQuizz .sendQuizz:hover {
+    background-color: #999
 }
