@@ -1,0 +1,53 @@
+#petitBac{
+    display: flex;
+    border: 1px solid white;
+    padding: 30px;
+    margin: 15px 0;
+    align-items: center;
+    flex-direction: column
+}
+#petitBac section > div:nth-of-type(1) label {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 1.5rem
+}
+
+#petitBac section > div:nth-of-type(1) input[type='text']{
+    padding: 4px 0;
+    height: 20px;
+    width: 28px;
+    font-size: 15px;
+    text-align: center
+}
+
+#petitBac button {
+    width: 100px;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    transition: .5s;
+    cursor: pointer;
+}
+
+#petitBac button:hover {
+    background-color: #999
+}
+
+#petitBac > section {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center
+}
+
+#petitBac > section > div:nth-of-type(2) > div {
+    margin: 10px 0
+}
+#petitBac > section > div:nth-of-type(2) > div > input  {
+    padding: 2px;
+}
+#petitBac > section > div:nth-of-type(2) > div > label  {
+    margin-right: 10px;
+}
