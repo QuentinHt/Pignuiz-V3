@@ -71,6 +71,7 @@
     color: white;
     border: 1px solid white;
     cursor: pointer;
+    transition: .5s
 }
 
 #createQuizz .sendQuizz:hover {

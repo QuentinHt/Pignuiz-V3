@@ -5,7 +5,7 @@ let createQuizz = document.querySelector('#createQuizz')
 let form = createQuizz.querySelector('form');
 let containerQuestions = form.querySelector('.questions');
 let allQuestions = containerQuestions.querySelectorAll(':scope > div');
-let buttonCreate = form.querySelector('.sendQuizz');
+let buttonCreate = createQuizz.querySelector('.sendQuizz');
 
 // Variables globales
 let numQuestion = createQuizz.querySelector('h2 span');

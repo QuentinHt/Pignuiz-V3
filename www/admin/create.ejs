@@ -3,9 +3,9 @@
 
 <main>
     <section id="createQuizz">
+            <button class="sendQuizz">Créer le quizz</button>
             <h1>Nouveau quizz : <span class="title"><%- data.data[0].title %></span><br>Thème : <span class="theme"><%- data.data[0].theme %></span></h1>
             <h2>Question <span>1</span></h2>
-
             <form action="" name="formQuizz">
                     <ul class="questionType">
                             <li>
@@ -21,7 +21,7 @@
                                 <%- include('questions/text') -%>  
                                 <%- include('questions/petitBac') -%>  
                         </div>
-                        <button class="sendQuizz">Créer le quizz</button>
+                        
             </form>
     </section>
 </main>
