@@ -5,6 +5,7 @@ let createQuizz = document.querySelector('#createQuizz')
 let form = createQuizz.querySelector('form');
 let containerQuestions = form.querySelector('.questions');
 let allQuestions = containerQuestions.querySelectorAll('div');
+let buttonCreate = form.querySelector('.sendQuizz');
 
 // Variables globales
 let numQuestion = createQuizz.querySelector('h2 span');
@@ -53,23 +54,41 @@ nextText.addEventListener('click', function(e){
     e.preventDefault();
     dataQuizz.push({
         'num': numQuestion.textContent,
+        'type': Number(document.querySelector('input[name="typeQuestion"]:checked').value),
         'question': questionText.value,
         'reponse': reponseText.value
-    })
-    console.log(dataQuizz)
+    });
+    questionText.value = '';
+    reponseText.value = '';
+    numQuestion.textContent = Number(numQuestion.textContent) + 1;
 });
 nextPetitBac.addEventListener('click', function(e){
     e.preventDefault();
     dataQuizz.push({
         'num': numQuestion.textContent,
+        'type': Number(document.querySelector('input[name="typeQuestion"]:checked').value),
         'letter': letterPetitBac.value,
         'theme1': FirstPetitBac.value,
         'theme2': SecondPetitBac.value,
         'theme3': ThirdPetitBac.value,
         'theme4': FourthPetitBac.value,
         'theme5': FifthPetitBac.value
-    })
-    console.log(dataQuizz)
+    });
+    letterPetitBac.value = '';
+    FirstPetitBac.value = '';
+    SecondPetitBac.value = '';
+    ThirdPetitBac.value = '';
+    FourthPetitBac.value = '';
+    FifthPetitBac.value = '';
+    numQuestion.textContent = Number(numQuestion.textContent) + 1;
 });
 
-//changeFormLog.addEventListener('click', changeFormLogin);
+buttonCreate.addEventListener('click', function(e){
+    e.preventDefault();
+    if(dataQuizz.length > 0){
+        console.log(dataQuizz)
+    }
+    else {
+        console.error("Il n'y a pas assez de questions")
+    }
+})

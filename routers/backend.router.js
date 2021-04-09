@@ -113,7 +113,6 @@ class BackendRouter {
         })
 
         this.router.post('/admin/create', this.passport.authenticate('jwt', { session: false, failureRedirect: '/login' }), (req, res) => {
-
             // Check body data
             if (typeof req.body === 'undefined' || req.body === null || Object.keys(req.body).length === 0) {
                 return renderErrorVue('error', req, res, 'No data provided', 'Request failed')
