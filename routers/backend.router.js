@@ -76,7 +76,7 @@ class BackendRouter {
                 return renderErrorVue('error', req, res, 'No data provided', 'Request failed')
             }
             else {
-
+                console.log(req)
                 // Check body data
                 const { ok, extra, miss } = checkFields(Mandatory.login, req.body);
 
@@ -126,6 +126,23 @@ class BackendRouter {
                 Controllers.user.readOne(req.user.id)
                 .then(apiResponse => renderSuccessVue('admin/create', req, res, [req.body,apiResponse], 'Request succeed', false))
                 .catch(apiError => renderErrorVue('admin/create', req, res, apiError, 'Request failed'))
+            }
+        })
+
+        this.router.post('/admin/createQuizz', this.passport.authenticate('jwt', { session: false, failureRedirect: '/login' }), (req, res) => {
+            // Check body data
+            if (typeof req.body === 'undefined' || req.body === null || Object.keys(req.body).length === 0) {
+                return renderErrorVue('error', req, res, 'No data provided', 'Request failed')
+            }
+            else {
+
+                // Check body data
+                const { ok, extra, miss } = checkFields(Mandatory.register, req.body);
+
+                // Error: bad fields provided
+                Controllers.quizz.createOne(req)
+                .then(apiResponse => renderSuccessVue('admin/', req, res, [req.body,apiResponse], 'Request succeed', false))
+                .catch(apiError => renderErrorVue('admin/', req, res, apiError, 'Request failed'))
             }
         })
 

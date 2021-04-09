@@ -10,6 +10,8 @@ let buttonCreate = form.querySelector('.sendQuizz');
 // Variables globales
 let numQuestion = createQuizz.querySelector('h2 span');
 let dataQuizz = [];
+let nameQuizz = createQuizz.querySelector('h1 .title');
+let themeQuizz = createQuizz.querySelector('h1 .theme')
 
 // Container question
 
@@ -86,7 +88,20 @@ nextPetitBac.addEventListener('click', function(e){
 buttonCreate.addEventListener('click', function(e){
     e.preventDefault();
     if(dataQuizz.length > 0){
-        console.log(dataQuizz)
+        let dataSend =
+            {
+                'title': nameQuizz.textContent,
+                'theme': themeQuizz.textContent,
+                'questions': dataQuizz
+            };
+            console.log(dataSend)
+            fetch('/admin/createQuizz', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dataSend)
+            });
     }
     else {
         console.error("Il n'y a pas assez de questions")
