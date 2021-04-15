@@ -47,14 +47,21 @@ let hiddenContainers = () => {
 }
 
 // Function Questions
-let textQuestion = () => {
+let textQuestion = (q) => {
     hiddenContainers();
     containerText.classList.remove('hidden');
+    h2Text.textContent = q.question;
+    inputText = '';
 }
 
-let petitBacQuestion = () => {
+let petitBacQuestion = (q) => {
     hiddenContainers();
     containerPetitBac.classList.remove('hidden');
+    letter.textContent = q.letter;
+    for(let i = 0; i < 5; i++){
+        themeLabel[i].textContent = 'oui';
+        themeInput[i].textContent = '';
+    }
 }
 
 // Global Events

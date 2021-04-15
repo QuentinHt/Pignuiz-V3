@@ -70,11 +70,7 @@ nextPetitBac.addEventListener('click', function(e){
         'num': numQuestion.textContent,
         'type': Number(document.querySelector('input[name="typeQuestion"]:checked').value),
         'letter': letterPetitBac.value,
-        'theme1': FirstPetitBac.value,
-        'theme2': SecondPetitBac.value,
-        'theme3': ThirdPetitBac.value,
-        'theme4': FourthPetitBac.value,
-        'theme5': FifthPetitBac.value
+        'theme': [FirstPetitBac.value,SecondPetitBac.value,ThirdPetitBac.value,FourthPetitBac.value,FifthPetitBac.value]
     });
     letterPetitBac.value = '';
     FirstPetitBac.value = '';
