@@ -19,10 +19,33 @@
 				</p>
 	</section>
 	<section id="gameQuizz" class="hidden">
-		<p>Ca joue</p>
+		<h1>Question <span></span></h1>
+		<div class="text hidden">
+			<h2></h2>
+			<input type="text">
+		</div>
+		<div class="petitBac hidden">
+			<h2></h2>
+			<label for="theme1"></label>
+			<input type="text" id="theme1">
+			<label for="theme2"></label>
+			<input type="text" id="theme2">
+			<label for="theme3"></label>
+			<input type="text" id="theme3">
+			<label for="theme4"></label>
+			<input type="text" id="theme4">
+			<label for="theme5"></label>
+			<input type="text" id="theme5">
+		</div>
 	</section>
 
 </main>
-<script src="/scripts/quizz/app.js"></script>
+<script>
+    const dataQuizz = '<%- JSON.stringify(data.data.quizz) %>';
+</script>
+<script src="/scripts/quizz/app.js">
+// bar chart data
+
+</script>
 <!-- Importer le footer en EJS -->
 <%- include('statics/footer') -%>
