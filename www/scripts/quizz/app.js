@@ -8,6 +8,7 @@ let allSectionQuestion = sectionPlay.querySelectorAll('div');
 
 let buttonStart = sectionStart.querySelector('button');
 let numberQuestion = sectionPlay.querySelector('h1 span');
+let timer = document.getElementById('timer');
 
 // Question text
 let containerText = sectionPlay.querySelector('.text');
@@ -30,14 +31,23 @@ let startQuizz = () => {
     sectionPlay.classList.remove('hidden');
 
     numberQuestion.textContent = count;
-    
+
     if(quizz.questions[0].type == 1){
         textQuestion(quizz.questions[0]);
     }
     else if(quizz.questions[0].type == 2){
         petitBacQuestion(quizz.questions[0]);
     }
+    downTimer(30);
 };
+
+let downTimer = (x) => {
+    console.log(x)
+    if(x > 0){
+        timer.textContent = x;
+        setTimeout(function() { downTimer(x - 1); }, 100);
+    }
+}
 
 let nextQuestion = () => {
     // for(let i = 0; i < quizz.questions.length; i ++){
