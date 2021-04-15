@@ -24,6 +24,7 @@ let themeInput = containerPetitBac.querySelectorAll('input');
 const quizz = JSON.parse(dataQuizz);
 
 let count = 1;
+let actualQuestion = 0;
 // Globals functions
 
 let startQuizz = () => {
@@ -32,20 +33,35 @@ let startQuizz = () => {
 
     numberQuestion.textContent = count;
 
-    if(quizz.questions[0].type == 1){
-        textQuestion(quizz.questions[0]);
+    if(quizz.questions[actualQuestion].type == 1){
+        textQuestion(quizz.questions[actualQuestion]);
     }
-    else if(quizz.questions[0].type == 2){
-        petitBacQuestion(quizz.questions[0]);
+    else if(quizz.questions[actualQuestion].type == 2){
+        petitBacQuestion(quizz.questions[actualQuestion]);
     }
+    actualQuestion ++;
     downTimer(30);
 };
 
 let downTimer = (x) => {
-    console.log(x)
     if(x > 0){
         timer.textContent = x;
-        setTimeout(function() { downTimer(x - 1); }, 100);
+        setTimeout(function() { downTimer(x - 1); }, 10);
+    }
+    else {
+        if(actualQuestion == quizz.questions.length){
+            console.log('quizz fini')
+        }
+        else {
+            if(quizz.questions[actualQuestion].type == 1){
+                textQuestion(quizz.questions[actualQuestion]);
+            }
+            else if(quizz.questions[actualQuestion].type == 2){
+                petitBacQuestion(quizz.questions[actualQuestion]);
+            }
+            actualQuestion ++;
+            downTimer(30);
+        }
     }
 }
 
