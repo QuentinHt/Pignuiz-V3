@@ -24,7 +24,7 @@ class BackendRouter {
     routes() {
         // [BACKOFFICE] Render index vue
         this.router.get('/', this.passport.authenticate('jwt', { session: false, failureRedirect: '/login' }), (req, res) => {
-            Controllers.post.readAll()
+            Controllers.quizz.readAll()
                 .then(apiResponse => renderSuccessVue('index', req, res, apiResponse, 'Request succeed', false))
                 .catch(apiError => renderErrorVue('index', req, res, apiError, 'Request failed'))
         })
@@ -53,19 +53,19 @@ class BackendRouter {
         this.router.get('/:endpoint/:id', this.passport.authenticate('jwt', { session: false, failureRedirect: '/login' }), async (req, res) => {
 
             let data = {
-                post: null,
+                quizz: null,
                 user: null,
             };
 
             await Controllers[req.params.endpoint].readOne(req.params.id)
-                .then(post => data.post = post)
-                .catch(() => renderErrorVue('error', req, res, 'Article inconnu', 'Request failed'));
+                .then(quizz => data.quizz = quizz)
+                .catch(() => renderErrorVue('error', req, res, 'Quizz inconnu', 'Request failed'));
 
             await Controllers['user'].readOne(req.user.id)
                 .then(user => data.user = user)
                 .catch(() => data.user = null);
 
-            renderSuccessVue('post', req, res, data, 'Request succeed', false)
+            renderSuccessVue('quizz', req, res, data, 'Request succeed', false)
         })
 
         // [BACKOFFICE] get data from client to log user and render index vue
