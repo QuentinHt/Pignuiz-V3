@@ -7,6 +7,7 @@ let sectionPlay = document.getElementById('gameQuizz');
 let allSectionQuestion = sectionPlay.querySelectorAll('div');
 
 let buttonStart = sectionStart.querySelector('button');
+let numberQuestion = sectionPlay.querySelector('h1 span');
 
 // Question text
 let containerText = sectionPlay.querySelector('.text');
@@ -20,12 +21,16 @@ let themeLabel = containerPetitBac.querySelectorAll('label');
 let themeInput = containerPetitBac.querySelectorAll('input');
 
 const quizz = JSON.parse(dataQuizz);
+
+let count = 1;
 // Globals functions
 
 let startQuizz = () => {
     sectionStart.classList.add('hidden');
     sectionPlay.classList.remove('hidden');
 
+    numberQuestion.textContent = count;
+    
     if(quizz.questions[0].type == 1){
         textQuestion(quizz.questions[0]);
     }
