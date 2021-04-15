@@ -25,6 +25,7 @@ const quizz = JSON.parse(dataQuizz);
 
 let count = 1;
 let actualQuestion = 0;
+let dataResponse = [];
 // Globals functions
 
 let startQuizz = () => {
@@ -39,27 +40,29 @@ let startQuizz = () => {
     else if(quizz.questions[actualQuestion].type == 2){
         petitBacQuestion(quizz.questions[actualQuestion]);
     }
-    actualQuestion ++;
     downTimer(30);
 };
 
 let downTimer = (x) => {
     if(x > 0){
         timer.textContent = x;
-        setTimeout(function() { downTimer(x - 1); }, 10);
+        setTimeout(function() { downTimer(x - 1); }, 100);
     }
     else {
+        pushReponse(quizz.questions[actualQuestion].type);
+        actualQuestion ++;
         if(actualQuestion == quizz.questions.length){
-            console.log('quizz fini')
+            console.log('quizz fini');
+            console.log(dataResponse);
         }
         else {
+            
             if(quizz.questions[actualQuestion].type == 1){
                 textQuestion(quizz.questions[actualQuestion]);
             }
             else if(quizz.questions[actualQuestion].type == 2){
                 petitBacQuestion(quizz.questions[actualQuestion]);
             }
-            actualQuestion ++;
             downTimer(30);
         }
     }
@@ -70,6 +73,19 @@ let nextQuestion = () => {
     //     console.log(quizz.questions[i]);
     // }
 };
+
+let pushReponse = (type) => {
+    if(type == 1){
+        dataResponse.push(inputText.value)
+    }
+    else if(type == 2){
+        let petitBacReponse = [];
+        for(let i = 0; i < 5; i++){
+            petitBacReponse.push(themeInput[i].value);
+        }
+        dataResponse.push(petitBacReponse);
+    }
+}
 
 let hiddenContainers = () => {
     allSectionQuestion.forEach(question => {
@@ -82,7 +98,7 @@ let textQuestion = (q) => {
     hiddenContainers();
     containerText.classList.remove('hidden');
     h2Text.textContent = q.question;
-    inputText = '';
+    inputText.value = '';
 }
 
 let petitBacQuestion = (q) => {
@@ -91,7 +107,7 @@ let petitBacQuestion = (q) => {
     letter.textContent = q.letter;
     for(let i = 0; i < 5; i++){
         themeLabel[i].textContent = q.theme[i];
-        themeInput[i].textContent = '';
+        themeInput[i].value = '';
     }
 }
 
