@@ -59,7 +59,7 @@ let petitBacQuestion = (q) => {
     containerPetitBac.classList.remove('hidden');
     letter.textContent = q.letter;
     for(let i = 0; i < 5; i++){
-        themeLabel[i].textContent = 'oui';
+        themeLabel[i].textContent = q.theme[i];
         themeInput[i].textContent = '';
     }
 }
