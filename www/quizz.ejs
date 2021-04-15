@@ -2,19 +2,25 @@
 <%- include('statics/header') -%>
 
 <main>
-
-	<p>
-		<%- data.data.quizz.title %>
-	</p><br>
-
-
-	<p>
-		<%- data.data.quizz.theme %>
-	</p>
-
-	<p>
-			<%- data.data.user.givenName %>
-	</p>
+	<section id="accueilQuizz">
+			<p>
+					<%- data.data.quizz.title %>
+				</p><br>
+			
+			
+				<p>
+					<%- data.data.quizz.theme %>
+				</p>
+			
+				<button>Start Quizz</button>
+			
+				<p>
+						<%- data.data.user.givenName %>
+				</p>
+	</section>
+	<section id="gameQuizz" class="hidden">
+		<p>Ca joue</p>
+	</section>
 
 </main>
 
