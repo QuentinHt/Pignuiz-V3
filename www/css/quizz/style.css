@@ -26,7 +26,8 @@
 }
 #gameQuizz > div {
     height: calc(100% - 102px);
-    box-sizing: border-box
+    box-sizing: border-box;
+    overflow-y: scroll
 }
 #gameQuizz input {
     padding: 5px 10px;

@@ -46,7 +46,7 @@ let startQuizz = () => {
 let downTimer = (x) => {
     if(x > 0){
         timer.textContent = x;
-        setTimeout(function() { downTimer(x - 1); }, 100000);
+        setTimeout(function() { downTimer(x - 1); }, 10);
     }
     else {
         pushReponse(quizz.questions[actualQuestion].type);

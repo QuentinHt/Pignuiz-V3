@@ -40,6 +40,20 @@ const readOne = id => {
     })
 }
 
+const readAllFromAuthor = authorId => {
+    return new Promise((resolve, reject) => {
+        // Mongoose population to get associated data
+        Models.quizz.find({ author: authorId })
+            .populate('quizz', ['author'])
+            .populate('author', ['-password'])
+            .exec((err, data) => {
+                if (err) { return reject(err) }
+                else { return resolve(data) }
+            })
+    })
+}
+
+
 //
 
 /* 
