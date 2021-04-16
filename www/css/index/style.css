@@ -1,0 +1,56 @@
+#sectionIndex {
+    display: flex;
+}
+
+#sectionIndex > div:nth-of-type(1) {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    margin-left: 2.5%;
+    background-color: rgb(20,20,20);
+    border-radius: 10px;
+    padding: 10px
+}
+#sectionIndex > div:nth-of-type(1) > .quizz-liste{
+    border-top: 1px solid rgb(80,80,80);
+}
+#sectionIndex > div:nth-of-type(1) > .quizz-liste > .quizz-liste-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid rgb(80,80,80);
+    margin: 4px 0
+}
+#sectionIndex > div:nth-of-type(1) > .quizz-liste > .quizz-liste-container .content {
+    width: 100%;
+}
+#sectionIndex > div:nth-of-type(1) > .quizz-liste > .quizz-liste-container .content > p:nth-of-type(1) {
+   display: flex;
+   width: 100%;
+   margin-bottom: 5px
+}
+#sectionIndex > div:nth-of-type(1) > .quizz-liste > .quizz-liste-container .content > p:nth-of-type(1) > span:nth-of-type(2) {
+    margin-left: auto;
+}
+#sectionIndex > div:nth-of-type(1) > .quizz-liste > .quizz-liste-container > .action-button {
+    margin-left: auto;
+    padding-left: 20px
+}
+#sectionIndex > div:nth-of-type(1) > .quizz-liste > .quizz-liste-container > .action-button  button {
+    width: 36px;
+    height: 36px;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 10px;
+    display: flex;
+    cursor: pointer;
+    transition: .3s
+}
+#sectionIndex > div:nth-of-type(1) > .quizz-liste > .quizz-liste-container > .action-button  button:hover {
+    background-color: rgb(100,100,100)
+}
+#sectionIndex > div:nth-of-type(1) > .quizz-liste > .quizz-liste-container > .action-button  button img{
+    width: 16px;
+    height: 16px;
+    margin: auto
+}

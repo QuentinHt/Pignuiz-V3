@@ -2,16 +2,26 @@
 <%- include('statics/header') -%>
 
 <main>
-    <section>
+    <section id="sectionIndex">
+        <div>
     <h3>Liste des quizzs</h3>
+    <div class="quizz-liste">
     <% if( data.data ) { %>
          <% for(let item of data.data) { %>
-                <h4><%- item.title %></h4>
-                <h4><%- item.theme %></h4>
-                <h4>Nombre de questions : <%- item.questions.length %></h4>
-                <a href="/quizz/<%- item._id %>">Voir plus</a>
+            <div class="quizz-liste-container">
+                <div class="content">
+                    <p><span><%- item.title %></span><span><%- item.questions.length %> questions</span></p>
+                    <p>Thème : <%- item.theme %></p>
+                </div>
+                <div class="action-button">
+                        <a href="/quizz/<%- item._id %>"><button><img src="assets/icons/play.svg" alt="Bouton permettant de lancer le quizz"></button></a>
+                </div>
+            </div>
         <% } %> 
     <% } %>
+</div>
+</div>
+<div></div>
 </section>
 </main>
 
