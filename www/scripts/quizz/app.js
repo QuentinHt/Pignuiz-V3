@@ -4,6 +4,7 @@
 
 let sectionStart = document.getElementById('accueilQuizz');
 let sectionPlay = document.getElementById('gameQuizz');
+let sectionReponse = document.getElementById('reponseQuizz');
 let allSectionQuestion = sectionPlay.querySelectorAll('div');
 
 let buttonStart = sectionStart.querySelector('button');
@@ -25,7 +26,7 @@ const quizz = JSON.parse(dataQuizz);
 
 let actualQuestion = 0;
 let dataResponse = [];
-// Globals functions
+// Quizz functions
 
 let startQuizz = () => {
     sectionStart.classList.add('hidden');
@@ -51,8 +52,8 @@ let downTimer = (x) => {
         pushReponse(quizz.questions[actualQuestion].type);
         actualQuestion ++;
         if(actualQuestion == quizz.questions.length){
-            console.log('quizz fini');
             console.log(dataResponse);
+            startResponse();
         }
         else {
             numberQuestion.textContent = actualQuestion + 1;
@@ -66,12 +67,6 @@ let downTimer = (x) => {
         }
     }
 }
-
-let nextQuestion = () => {
-    // for(let i = 0; i < quizz.questions.length; i ++){
-    //     console.log(quizz.questions[i]);
-    // }
-};
 
 let pushReponse = (type) => {
     if(type == 1){
@@ -108,6 +103,13 @@ let petitBacQuestion = (q) => {
         themeLabel[i].textContent = q.theme[i];
         themeInput[i].value = '';
     }
+}
+
+// Result functions
+
+let startResponse = () => {
+    sectionPlay.classList.add('hidden');
+    sectionReponse.classList.remove('hidden');
 }
 
 // Global Events
