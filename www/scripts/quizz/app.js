@@ -93,6 +93,7 @@ let textQuestion = (q) => {
     containerText.classList.remove('hidden');
     h2Text.textContent = q.question;
     inputText.value = '';
+    inputText.focus();
 }
 
 let petitBacQuestion = (q) => {
@@ -103,6 +104,7 @@ let petitBacQuestion = (q) => {
         themeLabel[i].textContent = q.theme[i];
         themeInput[i].value = '';
     }
+    themeInput[0].focus();
 }
 
 // Result functions
