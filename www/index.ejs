@@ -6,8 +6,8 @@
         <div>
     <h3>Liste des derniers quizzs</h3>
     <div class="quizz-liste">
-    <% if( data.data ) { %>
-         <% for(let item of data.data) { %>
+    <% if( data.data.quizz ) { %>
+         <% for(let item of data.data.quizz) { %>
             <div class="quizz-liste-container">
                 <div class="content">
                     <p><span><%- item.title %></span><span><%- item.questions.length %> questions</span></p>

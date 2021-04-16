@@ -147,7 +147,8 @@ margin: 0;
 background-color: rgb(50, 50, 50);
 font-family: sans-serif;
 height: 100vh;
-color: white
+color: white;
+width: 100vw
 }
 
 header, main, footer{
@@ -155,13 +156,24 @@ header, main, footer{
     margin: auto;
 }
 
+header {
+    padding-top: 5px;
+    box-sizing: border-box
+}
+
 header h1 {
     color: white;
     text-align: left;
     margin: 0;
     font-family: RocknRoll One;
-    margin-left: 10px;
-    cursor: pointer
+    padding:0 10px;
+    cursor: pointer;
+    display: flex;
+    box-sizing: border-box;
+}
+
+header h1 span {
+    margin-left: auto
 }
 
 main{

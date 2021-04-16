@@ -23,16 +23,27 @@ class BackendRouter {
 
     routes() {
         // [BACKOFFICE] Render index vue
-        this.router.get('/', this.passport.authenticate('jwt', { session: false, failureRedirect: '/login' }), (req, res) => {
-            Controllers.quizz.readAll()
-                .then(apiResponse => renderSuccessVue('index', req, res, apiResponse, 'Request succeed', false))
-                .catch(apiError => renderErrorVue('index', req, res, apiError, 'Request failed'))
+        this.router.get('/', this.passport.authenticate('jwt', { session: false, failureRedirect: '/login' }),async (req, res) => {
+            let data = {
+                quizz: null,
+                user: null,
+            };
+
+            await Controllers.quizz.readAll()
+                .then(quizz => data.quizz = quizz)
+                .catch(() => renderErrorVue('error', req, res, 'Quizz inconnu', 'Request failed'));
+
+            await Controllers['user'].readOne(req.user.id)
+                .then(user => data.user = user)
+                .catch(() => data.user = null);
+
+            renderSuccessVue('index', req, res, data, 'Request succeed', false)
         })
 
         this.router.get('/admin', this.passport.authenticate('jwt', { session: false, failureRedirect: '/login' }), (req, res) => {
             Controllers.user.readOne(req.user.id)
                 .then(apiResponse => renderSuccessVue('admin/', req, res, apiResponse, 'Request succeed', false))
-                .catch(apiError => renderErrorVue('admin/', req, res, apiError, 'Request failed'))
+                .catch(apiError => renderErrorVue('admin/', req, res, apiError, 'Request failed'));
         })
 
         this.router.get('/erreur', (req, res) => {
