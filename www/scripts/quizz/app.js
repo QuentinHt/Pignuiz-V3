@@ -8,17 +8,17 @@ let sectionReponse = document.getElementById('reponseQuizz');
 let allSectionQuestion = sectionPlay.querySelectorAll('div');
 
 let buttonStart = sectionStart.querySelector('button');
-let numberQuestion = sectionPlay.querySelector('h1 span');
+let numberQuestion = sectionPlay.querySelector('h2 span');
 let timer = document.getElementById('timer');
 
 // Question text
 let containerText = sectionPlay.querySelector('.text');
-let h2Text = containerText.querySelector('h2');
+let h2Text = containerText.querySelector('h3');
 let inputText = containerText.querySelector('input');
 
 // Question Petit bac
 let containerPetitBac = sectionPlay.querySelector('.petitBac');
-let letter = containerPetitBac.querySelector('h2');
+let letter = containerPetitBac.querySelector('h3');
 let themeLabel = containerPetitBac.querySelectorAll('label');
 let themeInput = containerPetitBac.querySelectorAll('input');
 
@@ -46,7 +46,7 @@ let startQuizz = () => {
 let downTimer = (x) => {
     if(x > 0){
         timer.textContent = x;
-        setTimeout(function() { downTimer(x - 1); }, 100);
+        setTimeout(function() { downTimer(x - 1); }, 100000);
     }
     else {
         pushReponse(quizz.questions[actualQuestion].type);
@@ -103,6 +103,7 @@ let petitBacQuestion = (q) => {
     for(let i = 0; i < 5; i++){
         themeLabel[i].textContent = q.theme[i];
         themeInput[i].value = '';
+        themeInput[i].placeholder = q.letter;
     }
     themeInput[0].focus();
 }

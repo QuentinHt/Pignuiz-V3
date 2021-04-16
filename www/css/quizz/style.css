@@ -1,0 +1,35 @@
+@import 'petitBac.css';
+@import 'text.css';
+
+#gameQuizz {
+    background-color: rgb(20,20,20);
+    border-radius: 10px;
+    margin: 0 2.5%;
+    padding: 10px;
+    text-align: center;
+    height: calc(100% - 40px);
+    font-family: RocknRoll One
+}
+#gameQuizz h1 {
+    text-align: left
+}
+#gameQuizz h2 {
+    text-align: center
+}
+#gameQuizz h3 {
+    font-size: 1.5rem
+}
+#gameQuizz >  p {
+    right: calc(2.5% + 10px );
+    position: absolute;
+    font-size: 2rem
+}
+#gameQuizz > div {
+    height: calc(100% - 102px);
+    box-sizing: border-box
+}
+#gameQuizz input {
+    padding: 5px 10px;
+    border-radius: 30px;
+    border: none
+}

@@ -19,14 +19,15 @@
 				</p>
 	</section>
 	<section id="gameQuizz" class="hidden">
-		<h1>Question <span></span> sur <%- data.data.quizz.questions.length %></h1>
 		<p id="timer"></p>
+		<h1><%- data.data.quizz.title %></h1>
+		<h2>Question <span></span> / <%- data.data.quizz.questions.length %></h2>
 		<div class="text hidden">
-			<h2></h2>
+			<h3></h3>
 			<input type="text">
 		</div>
 		<div class="petitBac hidden">
-			<h2></h2>
+			<h3></h3>
 			<label for="theme1"></label>
 			<input type="text" id="theme1">
 			<label for="theme2"></label>

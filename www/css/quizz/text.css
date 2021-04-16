@@ -1,0 +1,9 @@
+#gameQuizz .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+
+#gameQuizz .text input {
+    margin: 30px 50px;
+}
