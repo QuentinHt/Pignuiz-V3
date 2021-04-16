@@ -23,7 +23,6 @@ let themeInput = containerPetitBac.querySelectorAll('input');
 
 const quizz = JSON.parse(dataQuizz);
 
-let count = 1;
 let actualQuestion = 0;
 let dataResponse = [];
 // Globals functions
@@ -32,7 +31,7 @@ let startQuizz = () => {
     sectionStart.classList.add('hidden');
     sectionPlay.classList.remove('hidden');
 
-    numberQuestion.textContent = count;
+    numberQuestion.textContent = '1';
 
     if(quizz.questions[actualQuestion].type == 1){
         textQuestion(quizz.questions[actualQuestion]);
@@ -56,7 +55,7 @@ let downTimer = (x) => {
             console.log(dataResponse);
         }
         else {
-            
+            numberQuestion.textContent = actualQuestion + 1;
             if(quizz.questions[actualQuestion].type == 1){
                 textQuestion(quizz.questions[actualQuestion]);
             }
