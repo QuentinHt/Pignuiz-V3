@@ -4,7 +4,7 @@
 <main>
     <section id="sectionIndex">
         <div>
-    <h3>Liste des quizzs</h3>
+    <h3>Liste des derniers quizzs</h3>
     <div class="quizz-liste">
     <% if( data.data ) { %>
          <% for(let item of data.data) { %>
@@ -21,7 +21,12 @@
     <% } %>
 </div>
 </div>
-<div></div>
+<div>
+        <h3>Derniers résultats</h3>
+        <div class="quizz-resultats">
+            <p>Pas de résultats pour le moment</p>
+        </div>
+</div>
 </section>
 </main>
 

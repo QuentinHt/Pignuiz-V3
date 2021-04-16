@@ -1,18 +1,21 @@
 #sectionIndex {
     display: flex;
+    height: calc(100% - 40px);
+
 }
 
-#sectionIndex > div:nth-of-type(1) {
+#sectionIndex > div {
     display: flex;
     flex-direction: column;
     width: 45%;
     margin-left: 2.5%;
     background-color: rgb(20,20,20);
     border-radius: 10px;
-    padding: 10px
+    padding: 10px;
 }
 #sectionIndex > div:nth-of-type(1) > .quizz-liste{
     border-top: 1px solid rgb(80,80,80);
+    overflow-y: scroll
 }
 #sectionIndex > div:nth-of-type(1) > .quizz-liste > .quizz-liste-container {
     display: flex;
