@@ -3,14 +3,18 @@
 Setup avec Docker :
 créer le container
 ```
-docker build -t boilerplate .
+docker build -t <nom> .
 pwd
-docker run -dit --name boilerplate -v pwd -p 3000:3000 boilerplate
+docker run -dit --name <nom> -v <pwd>:/var/www/boilerplate -p <port>:<port> <nom>
+
+Exemple :
+docker run -dit --name boilerplate -v <pwd>:/var/www/boilerplate -p 3000:3000 boilerplate
+
 ```
 créer le fichier .env
 ```
 # Serveur
-PORT=3000
+PORT=<port>
 MONGO_URL=mongodb://127.0.0.1:27017/boilerplate
 BCRYPT=
 
@@ -24,12 +28,13 @@ JWT_SECRET=thisismyjwtsecret
 # HEADERS
 ALLOWED_ORIGINS=*
 ```
+
 installer les dépendances
 ```
-docker exec -it boilerplate npm install
-docker exec -it boilerplate npm install -g nodemon
+docker exec -it <nom> npm install
+docker exec -it <nom> npm install -g nodemon
 ```
 lancer le serveur
 ```
-docker exec -it boilerplate npm start
+docker exec -it <nom> npm start
 ```
