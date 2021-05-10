@@ -13,10 +13,19 @@
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages > li { padding: 0.5rem 1rem; }
       #messages > li:nth-child(odd) { background: #efefef; }
+
+      .red {
+          background-color: red
+      }
+      .blue {
+          background-color: blue
+      }
+
     </style>
   </head>
   <body>
     <ul id="messages"></ul>
+    <button id="button" class="red">haha</button>
     <form id="form" action="">
       <input id="input" autocomplete="off" /><button>Send</button>
     </form>
@@ -42,6 +51,14 @@
       item.textContent = msg;
       messages.appendChild(item);
       window.scrollTo(0, document.body.scrollHeight);
+     const button = document.getElementById('button');
+     button.classList.remove('red');
+     button.classList.add('blue');
     });
+
+socket.on('executecommand', function(data){
+    var a = 'foo';
+    commands[data.commandName](a);
+});
   </script>
 </html>
