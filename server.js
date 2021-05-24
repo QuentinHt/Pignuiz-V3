@@ -12,6 +12,9 @@ Imports
     // Services
     const MONGOclass = require('./services/mongo.class');
     const { dirname } = require('path');
+    // const { Server } = require("socket.io");
+    // const io = new Server(server);  
+
 //
 
 /*
@@ -55,6 +58,13 @@ class ServerClass{
         //=> Set CookieParser to setup serverside cookies
         this.server.use(cookieParser(process.env.COOKIE_SECRET));
 
+        // const server = require('http').Server(this.server)
+        // const io = require('socket.io')(server)
+
+        // io.on('connection', (socket) =>{
+        //     console.log(`Connecté au client oui`)
+        //  })
+
         // Start server configuration
         this.config();
     }
@@ -79,6 +89,10 @@ class ServerClass{
         const backendRouter = new BackendRouterClass( { passport } );
         this.server.use('/', backendRouter.init());
 
+        // // Set Socket
+        // const socket  = require('./services/socket.service');
+        // this.server.use(socket)
+
         // Launch server
         this.launch();
     }
@@ -87,6 +101,18 @@ class ServerClass{
         // Start MongoDB connection
         this.MongoDB.connectDb()
         .then( db => {
+            // io.on('connection', (socket) => {
+            //     console.log('a user connected');
+            //     socket.on('disconnect', () => {
+            //       console.log('user disconnected');
+            //     });
+            //     socket.on('chat message', (msg) => {
+            //       io.emit('chat message', msg);
+            //     });
+            //   });
+              
+            //   io.emit('some event', { someProperty: 'some value', otherProperty: 'other value' });
+
             // Start server
             this.server.listen(this.port, () => {
                 console.log({
