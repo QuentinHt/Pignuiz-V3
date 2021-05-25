@@ -11,6 +11,8 @@ let buttonStart = sectionStart.querySelector('button');
 let numberQuestion = sectionPlay.querySelector('h2 span');
 let timer = document.getElementById('timer');
 
+let name = document.getElementById('name');
+
 // Question text
 let containerText = sectionPlay.querySelector('.text');
 let h2Text = containerText.querySelector('h3');
@@ -25,7 +27,7 @@ let themeInput = containerPetitBac.querySelectorAll('input');
 const quizz = JSON.parse(dataQuizz);
 
 let actualQuestion = 0;
-let dataResponse = [];
+let dataResponse = [name.textContent];
 // Quizz functions
 
 let startQuizz = () => {
@@ -52,7 +54,6 @@ let downTimer = (x) => {
         pushReponse(quizz.questions[actualQuestion].type);
         actualQuestion ++;
         if(actualQuestion == quizz.questions.length){
-            console.log(dataResponse);
             socket.emit('displayResult', dataResponse);
             startResponse();
         }
