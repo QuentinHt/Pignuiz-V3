@@ -3,20 +3,20 @@
 
 <main>
 	<section id="accueilQuizz">
-			<p>
-					<%- data.data.quizz.title %>
-				</p><br>
-			
-			
-				<p>
-					<%- data.data.quizz.theme %>
-				</p>
-			
-				<button>Start Quizz</button>
-			
-				<p>
-						<%- data.data.user.givenName %>
-				</p>
+		<p>
+			<%- data.data.quizz.title %>
+		</p><br>
+
+
+		<p>
+			<%- data.data.quizz.theme %>
+		</p>
+
+		<button>Start Quizz</button>
+
+		<p>
+			<%- data.data.user.givenName %>
+		</p>
 	</section>
 	<section id="gameQuizz" class="hidden">
 		<p id="timer"></p>
@@ -44,54 +44,29 @@
 	<section id="reponseQuizz" class="hidden">
 		<h1>reponse</h1>
 	</section>
-	<ul id="messages"></ul>
-    <button id="button" class="red">haha</button>
-    <form id="form" action="">
-      <input id="input" autocomplete="off" /><button>Send</button>
-    </form>
 </main>
 <script>
-    const dataQuizz = '<%- JSON.stringify(data.data.quizz) %>';
+	const dataQuizz = '<%- JSON.stringify(data.data.quizz) %>';
 </script>
 <script src="/scripts/quizz/app.js">
-// bar chart data
+	// bar chart data
 </script>
 <script src="https://cdn.socket.io/3.1.3/socket.io.min.js"></script>
 <script>
-  const socket = io('http://localhost:3001', { transports: ['websocket', 'polling', 'flashsocket'] });
-
-  console.log(socket)
-  var messages = document.getElementById('messages');
-    var form = document.getElementById('form');
-    var input = document.getElementById('input');
-  
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      if (input.value) {
-        socket.emit('chat message', input.value);
-        input.value = '';
-      }
+	const socket = io('http://localhost:3001', {
+		transports: ['websocket', 'polling', 'flashsocket']
 	});
-	
-	socket.on('connect', function ()
-{
-    console.log("connected");
-    socket.on('newPhoto',function()
-    {
-        load_posts();
-    });
-});
-  
-    socket.on('chat message', function(msg) {
-      var item = document.createElement('li');
-      item.textContent = msg;
-      messages.appendChild(item);
-      window.scrollTo(0, document.body.scrollHeight);
-     const button = document.getElementById('button');
-     button.classList.remove('red');
-	 button.classList.add('blue');
-	 console.log('oui')
-    });
+
+	console.log(socket)
+
+
+	socket.on('connect', function () {
+		console.log("connected");
+	});
+
+	socket.on('chat message', function (msg) {
+
+	});
 </script>
 <!-- Importer le footer en EJS -->
 <%- include('statics/footer') -%>
