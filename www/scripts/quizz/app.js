@@ -120,4 +120,8 @@ let startResponse = () => {
 
 // Login Events
 
-buttonStart.addEventListener('click', startQuizz);
+buttonStart.addEventListener('click', () => {
+    socket.emit('startQuizz')
+  }, false);
+
+

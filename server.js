@@ -109,6 +109,9 @@ class ServerClass{
             socket.on('displayResult', (response) => {
                 io.emit('displayResult', response);
             });
+            socket.on('startQuizz', () => {
+                io.emit('startQuizz');
+            });
           });
           io.emit('some event', { someProperty: 'some value', otherProperty: 'other value' });
           app.listen(3001);

@@ -10,6 +10,10 @@ socket.on('displayResult', function(response) {
     console.log(response)
 });
 
+socket.on('startQuizz', function(response) {
+    startQuizz();
+});
+
 socket.on('executecommand', function(data){
     var a = 'foo';
     commands[data.commandName](a);
