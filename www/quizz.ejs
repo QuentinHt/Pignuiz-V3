@@ -44,6 +44,7 @@
 	<section id="reponseQuizz" class="hidden">
 		<h1>reponse</h1>
 	</section>
+	<button id="test">je suis un bouton</button>
 </main>
 <script>
 	const dataQuizz = '<%- JSON.stringify(data.data.quizz) %>';
@@ -63,10 +64,7 @@
 	socket.on('connect', function () {
 		console.log("connected");
 	});
-
-	socket.on('chat message', function (msg) {
-
-	});
 </script>
+<script src="/scripts/quizz/result.js"></script>
 <!-- Importer le footer en EJS -->
 <%- include('statics/footer') -%>

@@ -46,13 +46,14 @@ let startQuizz = () => {
 let downTimer = (x) => {
     if(x > 0){
         timer.textContent = x;
-        setTimeout(function() { downTimer(x - 1); }, 1000);
+        setTimeout(function() { downTimer(x - 1); }, 100);
     }
     else {
         pushReponse(quizz.questions[actualQuestion].type);
         actualQuestion ++;
         if(actualQuestion == quizz.questions.length){
             console.log(dataResponse);
+            socket.emit('displayResult', dataResponse);
             startResponse();
         }
         else {

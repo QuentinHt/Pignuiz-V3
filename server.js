@@ -106,8 +106,11 @@ class ServerClass{
             socket.on('chat message', (msg) => {
               io.emit('chat message', msg);
             });
+            socket.on('displayResult', (response) => {
+                io.emit('displayResult', response);
+            });
           });
-
+          io.emit('some event', { someProperty: 'some value', otherProperty: 'other value' });
           app.listen(3001);
 
           
