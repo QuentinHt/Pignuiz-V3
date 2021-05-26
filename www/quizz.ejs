@@ -37,7 +37,7 @@
 			<h2>Pignuiz terminé !</h2>
 			<button>Display Result</button>
 		</div>
-		<div class="hidden">
+		<div class="hidden result">
 			<h2>Question <span></span> / <%- data.data.quizz.questions.length %></h2>
 			<div class="text hidden">
 				<h3></h3>
@@ -79,6 +79,6 @@
 	// bar chart data
 </script>
 
-<script src="/scripts/quizz/result.js"></script>
+<script src="/scripts/quizz/socketFunct.js"></script>
 <!-- Importer le footer en EJS -->
 <%- include('statics/footer') -%>

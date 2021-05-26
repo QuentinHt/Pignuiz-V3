@@ -24,6 +24,13 @@ let letter = containerPetitBac.querySelector('h3');
 let themeLabel = containerPetitBac.querySelectorAll('label');
 let themeInput = containerPetitBac.querySelectorAll('input');
 
+// SectionResponse 
+let beforeResponse = sectionReponse.querySelector('.beforeResult');
+let response = sectionReponse.querySelector('.result');
+let buttonResponse = beforeResponse.querySelector('button');
+
+let numberResponse = response.querySelector('h2 span');
+
 const quizz = JSON.parse(dataQuizz);
 
 let actualQuestion = 0;
@@ -45,6 +52,21 @@ let startQuizz = () => {
         petitBacQuestion(quizz.questions[actualQuestion]);
     }
     downTimer(30);
+};
+
+let startDisplayResponse = () => {
+    beforeResponse.classList.add('hidden');
+    response.classList.remove('hidden');
+
+    numberResponse.textContent = '1';
+
+    // if(quizz.questions[actualQuestion].type == 1){
+    //     textQuestion(quizz.questions[actualQuestion]);
+    // }
+    // else if(quizz.questions[actualQuestion].type == 2){
+    //     petitBacQuestion(quizz.questions[actualQuestion]);
+    // }
+    // downTimer(30);
 };
 
 let downTimer = (x) => {
@@ -127,4 +149,6 @@ buttonStart.addEventListener('click', () => {
     socket.emit('startQuizz')
   }, false);
 
-
+buttonResponse.addEventListener('click', () => {
+    socket.emit('startDisplayResponse')
+  }, false);
