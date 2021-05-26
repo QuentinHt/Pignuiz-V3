@@ -13,6 +13,14 @@ socket.on('startDisplayResponse', function(data) {
     startDisplayResponse();
 });
 
+socket.on('textResponse', function(data) {
+    textResponse();
+});
+
+socket.on('petitBacResponse', function(data) {
+    petitBacResponse();
+});
+
 socket.on('executecommand', function(data){
     var a = 'foo';
     commands[data.commandName](a);

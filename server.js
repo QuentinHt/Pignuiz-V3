@@ -115,6 +115,12 @@ class ServerClass{
             socket.on('startDisplayResponse', () => {
                 io.emit('startDisplayResponse');
             });
+            socket.on('textResponse', () => {
+                io.emit('textResponse');
+            });
+            socket.on('petitBacResponse', () => {
+                io.emit('petitBacResponse');
+            });
           });
           io.emit('some event', { someProperty: 'some value', otherProperty: 'other value' });
           app.listen(3001);

@@ -27,6 +27,7 @@ let themeInput = containerPetitBac.querySelectorAll('input');
 // SectionResponse 
 let beforeResponse = sectionReponse.querySelector('.beforeResult');
 let response = sectionReponse.querySelector('.result');
+let allSectionResponse = response.querySelectorAll('div');
 let buttonResponse = beforeResponse.querySelector('button');
 
 let numberResponse = response.querySelector('h2 span');
@@ -59,14 +60,14 @@ let startDisplayResponse = () => {
     response.classList.remove('hidden');
 
     numberResponse.textContent = '1';
+    actualQuestion = 0;
 
-    // if(quizz.questions[actualQuestion].type == 1){
-    //     textQuestion(quizz.questions[actualQuestion]);
-    // }
-    // else if(quizz.questions[actualQuestion].type == 2){
-    //     petitBacQuestion(quizz.questions[actualQuestion]);
-    // }
-    // downTimer(30);
+    if(quizz.questions[actualQuestion].type == 1){
+        socket.emit('textResponse')
+    }
+    else if(quizz.questions[actualQuestion].type == 2){
+        socket.emit('petitBacResponse')
+    }
 };
 
 let downTimer = (x) => {
@@ -113,6 +114,12 @@ let hiddenContainers = () => {
     })
 }
 
+let hiddenContainersResponse = () => {
+    allSectionResponse.forEach(response => {
+        response.classList.add('hidden');
+    })
+}
+
 // Function Questions
 let textQuestion = (q) => {
     hiddenContainers();
@@ -132,6 +139,28 @@ let petitBacQuestion = (q) => {
         themeInput[i].placeholder = q.letter;
     }
     themeInput[0].focus();
+}
+
+// Function responses
+let textResponse = (number) => {
+    hiddenContainersResponse();
+    // containerText.classList.remove('hidden');
+    // h2Text.textContent = q.question;
+    // inputText.value = '';
+    // inputText.focus();
+    console.log('hhihi');
+}
+
+let petitBacResponse = (number) => {
+    hiddenContainersResponse();
+    // containerPetitBac.classList.remove('hidden');
+    // letter.textContent = q.letter;
+    // for(let i = 0; i < 5; i++){
+    //     themeLabel[i].textContent = q.theme[i];
+    //     themeInput[i].value = '';
+    //     themeInput[i].placeholder = q.letter;
+    // }
+    // themeInput[0].focus();
 }
 
 // Result functions
