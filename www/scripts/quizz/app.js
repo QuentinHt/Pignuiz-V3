@@ -31,6 +31,7 @@ let allSectionResponse = response.querySelectorAll('div');
 let buttonResponse = beforeResponse.querySelector('button');
 let responseName = response.querySelector('.n');
 let buttonValidate = response.querySelector('.validateButton');
+let nextAnswer = response.querySelector('.next');
 
 // Response text
 let containerTextResponse = response.querySelector('.text');
@@ -38,8 +39,8 @@ let responseTextQ = containerTextResponse.querySelector('.q');
 let responseTextR = containerTextResponse.querySelector('.r');
 
 // Response Petit bac
-let containerPetitBacResponse = sectionPlay.querySelector('.petitBac');
-let letterResponse= containerPetitBacResponse.querySelector('h3');
+let containerPetitBacResponse = response.querySelector('.petitBac');
+let letterResponse= containerPetitBacResponse.querySelector('.l');
 let themeLabelResponse = containerPetitBacResponse.querySelectorAll('label');
 let themeInputResponse = containerPetitBacResponse.querySelectorAll('input');
 
@@ -155,6 +156,16 @@ let petitBacQuestion = (q) => {
 }
 
 // Function responses
+
+let nextResponse = () => {
+    if(quizz.questions[actualResponse].type == 1){
+        socket.emit('textResponse', quizz.questions[actualResponse])
+    }
+    else if(quizz.questions[actualResponse].type == 2){
+        socket.emit('petitBacResponse', quizz.questions[actualResponse])
+    }
+}
+
 let textResponse = (q) => {
     hiddenContainersResponse();
     containerTextResponse.classList.remove('hidden');
@@ -174,10 +185,17 @@ let petitBacResponse = (q) => {
     hiddenContainersResponse();
     containerPetitBacResponse.classList.remove('hidden');
     letterResponse.textContent = q.letter;
+    responseName.textContent = allResponse[actualPlayer][0];
     for(let i = 0; i < 5; i++){
         themeLabelResponse[i].textContent = q.theme[i];
-        themeInputResponse[i].value = '';
-        themeInputResponse[i].placeholder = q.letter;
+        themeInputResponse[i].value = allResponse[actualPlayer][actualResponse + 1][i];
+    }
+    if(actualPlayer == numberPlayers){
+        actualPlayer = 0;
+        actualResponse++
+    }
+    else {
+        actualPlayer++;
     }
 }
 
@@ -217,3 +235,7 @@ buttonResponse.addEventListener('click', () => {
 buttonValidate.addEventListener('click', () => {
     socket.emit('validate')
 }, false);
+
+nextAnswer.addEventListener('click', () => {
+    socket.emit('nextAnswer');
+});

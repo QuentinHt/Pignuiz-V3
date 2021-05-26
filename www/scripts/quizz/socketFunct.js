@@ -25,6 +25,10 @@ socket.on('validate', function() {
     correct();
 });
 
+socket.on('nextAnswer', function() {
+    nextResponse();
+});
+
 socket.on('executecommand', function(data){
     var a = 'foo';
     commands[data.commandName](a);

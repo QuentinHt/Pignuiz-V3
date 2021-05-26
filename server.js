@@ -115,6 +115,9 @@ class ServerClass{
             socket.on('startDisplayResponse', () => {
                 io.emit('startDisplayResponse');
             });
+            socket.on('nextAnswer', () => {
+                io.emit('nextAnswer');
+            });
             socket.on('textResponse', (data) => {
                 io.emit('textResponse',data);
             });
