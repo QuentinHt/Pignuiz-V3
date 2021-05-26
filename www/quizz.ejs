@@ -8,7 +8,7 @@
 		<button>Start Quizz</button>
 		<p id="name"><%- data.data.user.givenName %></p>
 	</section>
-	<section id="gameQuizz" class="hidden">
+	<section id="gameQuizz" class="quizz hidden">
 		<p id="timer"></p>
 		<h1><%- data.data.quizz.title %></h1>
 		<h2>Question <span></span> / <%- data.data.quizz.questions.length %></h2>
@@ -31,25 +31,31 @@
 		</div>
 	</section>
 
-	<section id="reponseQuizz" class="hidden">
+	<section id="reponseQuizz" class="quizz hidden">
 		<h1><%- data.data.quizz.title %></h1>
-		<h2>Question <span></span> / <%- data.data.quizz.questions.length %></h2>
-		<div class="text hidden">
-			<h3></h3>
-			<input type="text">
+		<div class="beforeResult">
+			<h2>Pignuiz terminé !</h2>
+			<button>Display Result</button>
 		</div>
-		<div class="petitBac hidden">
-			<h3></h3>
-			<label for="theme1Response"></label>
-			<input type="text" id="theme1Response">
-			<label for="theme2Response"></label>
-			<input type="text" id="theme2Response">
-			<label for="theme3Response"></label>
-			<input type="text" id="theme3Response">
-			<label for="theme4Response"></label>
-			<input type="text" id="theme4Response">
-			<label for="theme5Response"></label>
-			<input type="text" id="theme5Response">
+		<div class="hidden">
+			<h2>Question <span></span> / <%- data.data.quizz.questions.length %></h2>
+			<div class="text hidden">
+				<h3></h3>
+				<input type="text">
+			</div>
+			<div class="petitBac hidden">
+				<h3></h3>
+				<label for="theme1Response"></label>
+				<input type="text" id="theme1Response">
+				<label for="theme2Response"></label>
+				<input type="text" id="theme2Response">
+				<label for="theme3Response"></label>
+				<input type="text" id="theme3Response">
+				<label for="theme4Response"></label>
+				<input type="text" id="theme4Response">
+				<label for="theme5Response"></label>
+				<input type="text" id="theme5Response">
+			</div>
 		</div>
 	</section>
 </main>
