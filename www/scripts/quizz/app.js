@@ -29,12 +29,13 @@ let beforeResponse = sectionReponse.querySelector('.beforeResult');
 let response = sectionReponse.querySelector('.result');
 let allSectionResponse = response.querySelectorAll('div');
 let buttonResponse = beforeResponse.querySelector('button');
+let responseName = response.querySelector('.n');
+let buttonValidate = response.querySelector('.validateButton');
 
 // Response text
 let containerTextResponse = response.querySelector('.text');
-let responseTextQ = response.querySelector('.q');
-let responseTextR = response.querySelector('.r');
-let responseTextN = response.querySelector('.n');
+let responseTextQ = containerTextResponse.querySelector('.q');
+let responseTextR = containerTextResponse.querySelector('.r');
 
 // Response Petit bac
 let containerPetitBacResponse = sectionPlay.querySelector('.petitBac');
@@ -159,7 +160,7 @@ let textResponse = (q) => {
     containerTextResponse.classList.remove('hidden');
     responseTextQ.textContent = `Question ${actualResponse + 1} : ${q.question}`;
     responseTextR.textContent = allResponse[actualPlayer][actualResponse + 1];
-    responseTextN.textContent = allResponse[actualPlayer][0];
+    responseName.textContent = allResponse[actualPlayer][0];
     if(actualPlayer == numberPlayers){
         actualPlayer = 0;
         actualResponse++
@@ -180,12 +181,26 @@ let petitBacResponse = (q) => {
     }
 }
 
+let correct = () => {
+    if(buttonValidate.textContent == 'Faux'){
+        buttonValidate.classList.remove('false');
+        buttonValidate.classList.add('true');
+        buttonValidate.textContent = 'Correct';
+    }
+    else {
+        buttonValidate.classList.add('false');
+        buttonValidate.classList.remove('true');
+        buttonValidate.textContent = 'Faux';
+    }
+}
+
 // Result functions
 
 let startResponse = () => {
     sectionPlay.classList.add('hidden');
     sectionReponse.classList.remove('hidden');
 }
+
 
 // Global Events
 
@@ -198,3 +213,7 @@ buttonStart.addEventListener('click', () => {
 buttonResponse.addEventListener('click', () => {
     socket.emit('startDisplayResponse')
   }, false);
+
+buttonValidate.addEventListener('click', () => {
+    socket.emit('validate')
+}, false);

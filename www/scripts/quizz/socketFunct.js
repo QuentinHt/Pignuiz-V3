@@ -21,6 +21,10 @@ socket.on('petitBacResponse', function(data) {
     petitBacResponse(data);
 });
 
+socket.on('validate', function() {
+    correct();
+});
+
 socket.on('executecommand', function(data){
     var a = 'foo';
     commands[data.commandName](a);

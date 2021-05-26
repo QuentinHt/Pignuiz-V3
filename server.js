@@ -121,6 +121,9 @@ class ServerClass{
             socket.on('petitBacResponse', (data) => {
                 io.emit('petitBacResponse',data);
             });
+            socket.on('validate', () => {
+                io.emit('validate');
+            });
           });
           io.emit('some event', { someProperty: 'some value', otherProperty: 'other value' });
           app.listen(3001);
