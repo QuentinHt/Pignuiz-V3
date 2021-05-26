@@ -28,6 +28,8 @@ const quizz = JSON.parse(dataQuizz);
 
 let actualQuestion = 0;
 let dataResponse = [name.textContent];
+
+let allResponse = [];
 // Quizz functions
 
 let startQuizz = () => {
@@ -48,7 +50,7 @@ let startQuizz = () => {
 let downTimer = (x) => {
     if(x > 0){
         timer.textContent = x;
-        setTimeout(function() { downTimer(x - 1); }, 100);
+        setTimeout(function() { downTimer(x - 1); }, 30);
     }
     else {
         pushReponse(quizz.questions[actualQuestion].type);
