@@ -14,11 +14,11 @@ socket.on('startDisplayResponse', function(data) {
 });
 
 socket.on('textResponse', function(data) {
-    textResponse();
+    textResponse(data);
 });
 
 socket.on('petitBacResponse', function(data) {
-    petitBacResponse();
+    petitBacResponse(data);
 });
 
 socket.on('executecommand', function(data){

@@ -30,11 +30,27 @@ let response = sectionReponse.querySelector('.result');
 let allSectionResponse = response.querySelectorAll('div');
 let buttonResponse = beforeResponse.querySelector('button');
 
-let numberResponse = response.querySelector('h2 span');
+// Response text
+let containerTextResponse = response.querySelector('.text');
+let responseTextQ = response.querySelector('.q');
+let responseTextR = response.querySelector('.r');
+let responseTextN = response.querySelector('.n');
+
+// Response Petit bac
+let containerPetitBacResponse = sectionPlay.querySelector('.petitBac');
+let letterResponse= containerPetitBacResponse.querySelector('h3');
+let themeLabelResponse = containerPetitBacResponse.querySelectorAll('label');
+let themeInputResponse = containerPetitBacResponse.querySelectorAll('input');
+
+let numberResponse = response.querySelector('#questionResult span');
+let nameResponse = response.querySelector('#nameResult')
 
 const quizz = JSON.parse(dataQuizz);
 
 let actualQuestion = 0;
+let actualResponse = 0;
+let actualPlayer = 0;
+let numberPlayers = 0;
 let dataResponse = [name.textContent];
 
 let allResponse = [];
@@ -58,15 +74,11 @@ let startQuizz = () => {
 let startDisplayResponse = () => {
     beforeResponse.classList.add('hidden');
     response.classList.remove('hidden');
-
-    numberResponse.textContent = '1';
-    actualQuestion = 0;
-
-    if(quizz.questions[actualQuestion].type == 1){
-        socket.emit('textResponse')
+    if(quizz.questions[actualResponse].type == 1){
+        socket.emit('textResponse', quizz.questions[actualResponse])
     }
-    else if(quizz.questions[actualQuestion].type == 2){
-        socket.emit('petitBacResponse')
+    else if(quizz.questions[actualResponse].type == 2){
+        socket.emit('petitBacResponse', quizz.questions[actualResponse])
     }
 };
 
@@ -142,25 +154,30 @@ let petitBacQuestion = (q) => {
 }
 
 // Function responses
-let textResponse = (number) => {
+let textResponse = (q) => {
     hiddenContainersResponse();
-    // containerText.classList.remove('hidden');
-    // h2Text.textContent = q.question;
-    // inputText.value = '';
-    // inputText.focus();
-    console.log('hhihi');
+    containerTextResponse.classList.remove('hidden');
+    responseTextQ.textContent = `Question ${actualResponse + 1} : ${q.question}`;
+    responseTextR.textContent = allResponse[actualPlayer][actualResponse + 1];
+    responseTextN.textContent = allResponse[actualPlayer][0];
+    if(actualPlayer == numberPlayers){
+        actualPlayer = 0;
+        actualResponse++
+    }
+    else {
+        actualPlayer++;
+    }
 }
 
-let petitBacResponse = (number) => {
+let petitBacResponse = (q) => {
     hiddenContainersResponse();
-    // containerPetitBac.classList.remove('hidden');
-    // letter.textContent = q.letter;
-    // for(let i = 0; i < 5; i++){
-    //     themeLabel[i].textContent = q.theme[i];
-    //     themeInput[i].value = '';
-    //     themeInput[i].placeholder = q.letter;
-    // }
-    // themeInput[0].focus();
+    containerPetitBacResponse.classList.remove('hidden');
+    letterResponse.textContent = q.letter;
+    for(let i = 0; i < 5; i++){
+        themeLabelResponse[i].textContent = q.theme[i];
+        themeInputResponse[i].value = '';
+        themeInputResponse[i].placeholder = q.letter;
+    }
 }
 
 // Result functions
