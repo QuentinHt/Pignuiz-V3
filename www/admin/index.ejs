@@ -2,8 +2,8 @@
 <%- include('../statics/header') -%>
 
 <main>
-    <h1><%- data.data.givenName %></h1>
-    <section class="flexBox">
+    <section class="adminSection">
+        <h1><%- data.data.givenName %></h1>
         <div id="newQuizz">
             <h2>Nouveau Quizz</h2>
             <form action="/admin/create" method="POST" class="flexBox flexColumn">
