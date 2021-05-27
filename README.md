@@ -5,10 +5,10 @@ créer le container
 ```
 docker build -t <nom> .
 pwd
-docker run -dit --name <nom> -v <pwd>:/var/www/boilerplate -p <port>:<port> <nom>
+docker run -dit --name <nom> -v <pwd>:/var/www/boilerplate -p <port>:<port> -p 3001:3001 <nom>
 
 Exemple :
-docker run -dit --name boilerplate -v <pwd>:/var/www/boilerplate -p 3000:3000 boilerplate
+docker run -dit --name boilerplate -v <pwd>:/var/www/boilerplate -p 3000:3000 -p 3001:3001 boilerplate
 
 ```
 créer le fichier .env
