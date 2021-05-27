@@ -114,3 +114,14 @@
     border: 1px solid white;
     background-color: white;
 }
+
+/* Score */
+
+#scoreQuizz .listScore .oneScore {
+    margin: 10px 0;
+    font-size: 1.2rem
+}
+
+#scoreQuizz .listScore .oneScore > span {
+    font-weight: 800
+}
