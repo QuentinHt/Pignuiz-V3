@@ -1,4 +1,4 @@
-#gameQuizz .petitBac {
+#gameQuizz .petitBac, #reponseQuizz .petitBac {
     background-color: rgb(50,50,50);
     display: inline-flex;
     flex-direction: column;
@@ -7,15 +7,19 @@
     align-items: center;
     text-align: center;
 }
-#gameQuizz .petitBac h3 {
+#reponseQuizz .petitBac {
+max-height: calc(100% - 200px);
+overflow: scroll;
+}
+#gameQuizz .petitBac h3, #reponseQuizz .petitBac h3 {
     margin: 0
 }
-#gameQuizz .petitBac input {
+#gameQuizz .petitBac input, #reponseQuizz .petitBac input {
 border: none;
 min-width: 200px;
 margin-bottom: 10px;
 }
-#gameQuizz .petitBac label {
+#gameQuizz .petitBac label, #reponseQuizz .petitBac label {
     min-width: 200px;
     margin: 10px 0
 }

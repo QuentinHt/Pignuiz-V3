@@ -162,6 +162,10 @@ header {
     box-sizing: border-box
 }
 
+header a {
+    text-decoration: none
+}
+
 header h1 {
     color: white;
     text-align: left;
@@ -171,6 +175,7 @@ header h1 {
     cursor: pointer;
     display: flex;
     box-sizing: border-box;
+    text-decoration: none
 }
 
 header h1 span {
@@ -179,6 +184,7 @@ header h1 span {
 
 main{
     height: calc(100% - 60px);
+    overflow: scroll
 }
 
 header{
@@ -198,7 +204,8 @@ height: calc(100%);
 .log > div {
 width: 30%;
 background-color: rgb(20,20,20);
-transition: 0.5s
+transition: 0.5s;
+padding-bottom: 20px;
 }
 
 .log > div form {

@@ -30,7 +30,7 @@ let themeInput = containerPetitBac.querySelectorAll('input');
 // SectionResponse 
 let beforeResponse = sectionReponse.querySelector('.beforeResult');
 let response = sectionReponse.querySelector('.result');
-let allSectionResponse = response.querySelectorAll('div');
+let allSectionResponse = response.querySelectorAll('.container');
 let buttonResponse = beforeResponse.querySelector('button');
 let responseName = response.querySelector('.n');
 let buttonValidate = response.querySelector('.validateButton');
