@@ -165,6 +165,10 @@ let petitBacQuestion = (q) => {
 // Function responses
 
 let nextResponse = () => {
+    if(buttonValidate.classList.contains('true')){
+        allScore[actualPlayer]++;
+    }
+    console.log(allScore)
     if(actualPlayer + 1 == numberPlayers){
         actualPlayer = 0;
         actualResponse++
@@ -172,8 +176,6 @@ let nextResponse = () => {
     else {
         actualPlayer++;
     }
-    console.log(actualPlayer);
-    console.log(actualResponse);
     if(quizz.questions[actualResponse].type == 1){
         textResponse(quizz.questions[actualResponse])
         //socket.emit('textResponse', quizz.questions[actualResponse])
