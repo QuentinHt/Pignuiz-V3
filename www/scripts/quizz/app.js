@@ -34,6 +34,9 @@ let responseName = response.querySelector('.n');
 let buttonValidate = response.querySelector('.validateButton');
 let nextAnswer = response.querySelector('.next');
 
+// SectionScore 
+let containerScore = sectionScore.querySelector('.listScore');
+
 // Response text
 let containerTextResponse = response.querySelector('.text');
 let responseTextQ = containerTextResponse.querySelector('.q');
@@ -58,6 +61,7 @@ let dataResponse = [name.textContent];
 
 let allResponse = [];
 let allScore = [];
+let scoreWithPlayers = [];
 // Quizz functions
 
 let startQuizz = () => {
@@ -84,18 +88,35 @@ let startDisplayResponse = () => {
     }
     if(quizz.questions[actualResponse].type == 1){
         textResponse(quizz.questions[actualResponse])
-        //socket.emit('textResponse', quizz.questions[actualResponse])
     }
     else if(quizz.questions[actualResponse].type == 2){
         petitBacResponse(quizz.questions[actualResponse])
-        // socket.emit('petitBacResponse', quizz.questions[actualResponse])
     }
 };
 
 let showScore = () => {
-    console.log(allScore);
     sectionReponse.classList.add('hidden');
     sectionScore.classList.remove('hidden');
+    triScore();
+}
+
+let triScore = () => {
+    scoreWithPlayers = [];
+    for(let i = 0; i < allScore.length; i++){
+        scoreWithPlayers.push({name: allResponse[i][0], score: allScore[i]})
+    };
+    displayScore(scoreWithPlayers.sort(function (a, b) {
+        return b.score - a.score;
+    }));
+}
+
+let displayScore = (data) => {
+    containerScore.innerHTML = '';    
+    for(let i = 0; i < scoreWithPlayers.length; i++){
+        containerScore.innerHTML += `
+            <div class='oneScore'>${i + 1}${i == 0 ? 'er' : 'ème'} : <span>${scoreWithPlayers[i].name}</span> avec <span>${scoreWithPlayers[i].score}</span> ${scoreWithPlayers[i].score < 2 ? 'point' : 'points'}</div>
+        `;
+    }
 }
 
 let downTimer = (x) => {
