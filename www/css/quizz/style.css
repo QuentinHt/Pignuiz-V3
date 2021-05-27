@@ -1,6 +1,8 @@
 @import 'petitBac.css';
 @import 'text.css';
 
+/* Global quizz */
+
 .quizz {
     background-color: rgb(20,20,20);
     border-radius: 10px;
@@ -39,6 +41,8 @@
     border-radius: 30px;
     border: none
 }
+
+/* Global result */
 
 .beforeResult {
     display: flex;

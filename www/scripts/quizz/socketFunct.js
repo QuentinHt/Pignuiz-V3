@@ -1,3 +1,5 @@
+// Prepare all socket functions
+
 socket.on('displayResult', function(response) {
     allResponse.push(response);
 });

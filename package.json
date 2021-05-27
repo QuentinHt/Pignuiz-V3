@@ -1,13 +1,13 @@
 {
   "name": "node-api-back",
   "version": "1.0.0",
-  "description": "Ce répertoire à été réalisé dans le cadre d'une formation aux techniques spécifiques à la mise en place d'une API RestFull en NodeJS",
+  "description": "Ce répertoire a été réalisé dans le cadre de ma formation de M2Dev à l'ECV digital pour la création d'une app personnelle",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
   },
-  "author": "Julien Noyer - dwsapp.io",
+  "author": "Quentin Huet",
   "license": "WTFPL",
   "dependencies": {
     "bcryptjs": "^2.4.3",

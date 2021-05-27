@@ -55,6 +55,8 @@ let nameResponse = response.querySelector('#nameResult')
 
 const quizz = JSON.parse(dataQuizz);
 
+// Set variables 
+
 let actualQuestion = 0;
 let actualResponse = 0;
 let actualPlayer = 0;
@@ -64,6 +66,7 @@ let dataResponse = [name.textContent];
 let allResponse = [];
 let allScore = [];
 let scoreWithPlayers = [];
+
 // Quizz functions
 
 let connected = (nameData) => {
@@ -82,7 +85,7 @@ let startQuizz = () => {
     else if(quizz.questions[actualQuestion].type == 2){
         petitBacQuestion(quizz.questions[actualQuestion]);
     }
-    downTimer(30);
+    downTimer(20);
 };
 
 let startDisplayResponse = () => {
@@ -128,7 +131,7 @@ let displayScore = (data) => {
 let downTimer = (x) => {
     if(x > 0){
         timer.textContent = x;
-        setTimeout(function() { downTimer(x - 1); }, 30);
+        setTimeout(function() { downTimer(x - 1); }, 1000);
     }
     else {
         pushReponse(quizz.questions[actualQuestion].type);

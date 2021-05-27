@@ -75,9 +75,9 @@ class ServerClass{
         server.use('/auth', authRouter.init());
 
         // Set API router
-        const ApiRouterClass = require('./routers/api.router');
-        const apiRouter = new ApiRouterClass( { passport } );
-        server.use('/api', apiRouter.init());
+        // const ApiRouterClass = require('./routers/api.router');
+        // const apiRouter = new ApiRouterClass( { passport } );
+        // server.use('/api', apiRouter.init());
 
         // Set backend router
         const BackendRouterClass = require('./routers/backend.router')
@@ -97,7 +97,7 @@ class ServerClass{
 
     play() {
 
-        
+        // Set all socket functions
         io.on('connection', (socket) => {
             console.log('a user connected');
             socket.on('disconnect', () => {
@@ -140,115 +140,10 @@ class ServerClass{
           
     }
 
-    // chat() {
-    //     server.get('/', this.passport.authenticate('jwt', { session: false }), (req, res) => {
-    //         RoomModel.find().then( documents => {
-    //             rooms = { };
-    //             documents.forEach( room => {
-    //                 rooms[room.name] = { _id: room._id, users: {}, owner: room.owner }
-    //             })
-    //             res.render('index', { rooms: rooms, me: req.user});
-    //         });
-    //     });
-
-    //     server.post('/room', this.passport.authenticate('jwt', { session: false }), (req, res) => {
-    //         if (rooms[req.body.room] != null) {
-    //             return res.redirect('/')
-    //         }
-    //         RoomModel.create({
-    //             'name': req.body.room,
-    //             'owner': req.user._id,
-    //         }).then( document => {
-    //             rooms[req.body.room] = { users: {} };
-    //             res.redirect(`${document.name}/${document._id}`);
-    //             // Envoi un message pour dire que la room à été créée
-    //             io.emit('room-created', document.name, document._id)
-    //         });
-    //     });
-
-    //     server.get('/:room/:id', this.passport.authenticate('jwt', { session: false }), (req, res) => {
-    //         if (rooms[req.params.room] == null) {
-    //             return res.redirect('/')
-    //         }
-    //         MessageModel.find({room: req.params.id}).then(messages => {
-    //             res.render('room', { roomName: req.params.room, rooms: rooms, user: req.user, messages: messages })
-    //         })
-    //     });
-
-    //     server.delete('/:room/:id', this.passport.authenticate('jwt', { session: false }), (req, res) => {
-    //         if (rooms[req.params.room] == null) {
-    //             return res.redirect('/')
-    //         }
-    //         RoomModel.findOneAndDelete({ _id: req.params.id })
-    //             .then( deletedDocument => {
-    //                 res.status(200).json({
-    //                     method: 'DELETE',
-    //                     route: `/${req.params.endpoint}/${req.params.id}`,
-    //                     data: deletedDocument,
-    //                     error: null,
-    //                     status: 200
-    //                 })
-    //             })
-    //             .catch( err => res.status(404).json({
-    //                 method: 'DELETE',
-    //                 route: `/${req.params.endpoint}/${req.params.id}`,
-    //                 data: null,
-    //                 error: err,
-    //                 status: 404
-    //             }));
-    //     });
-
-    //     app.listen(3000);
-
-    //     io.on('connection', socket => {
-    //         socket.on('new-user', (room, name, userId) => {
-    //             socket.join(room);
-    //             rooms[room].users[socket.id] = name;
-    //             socket.to(room).broadcast.emit('user-connected', name, userId)
-    //         });
-    //         socket.on('send-chat-message', (room, message, userId) => {
-    //             socket.to(room).broadcast.emit('chat-message', { message: message, name: rooms[room].users[socket.id], userId: userId });
-    //             UserModel.findById(userId).then( user => {
-    //                 MessageModel.create({ message: message, room: rooms[room]._id, user: userId, userName: user.pseudo})
-    //                     .then( document => {
-    //                         console.log('Message created', document)
-    //                     })
-    //                     .catch( err => {
-    //                         console.log('Message don\'t created')
-    //                     });
-    //             })
-    //         });
-    //         socket.on('disconnect', () => {
-    //             getUserRooms(socket).forEach(room => {
-    //                 socket.to(room).broadcast.emit('user-disconnected', rooms[room].users[socket.id]);
-    //                 delete rooms[room].users[socket.id]
-    //             })
-    //         })
-    //     });
-
-    //     function getUserRooms(socket) {
-    //         return Object.entries(rooms).reduce((names, [name, room]) => {
-    //             if (room.users[socket.id] != null) names.push(name)
-    //             return names
-    //         }, [])
-    //     }
-    // }
-
     launch(){
         // Start MongoDB connection
         this.MongoDB.connectDb()
         .then( db => {
-            // io.on('connection', (socket) => {
-            //     console.log('a user connected');
-            //     socket.on('disconnect', () => {
-            //       console.log('user disconnected');
-            //     });
-            //     socket.on('chat message', (msg) => {
-            //       io.emit('chat message', msg);
-            //     });
-            //   });
-              
-            //   io.emit('some event', { someProperty: 'some value', otherProperty: 'other value' });
 
             // Start server
             server.listen(this.port, () => {
