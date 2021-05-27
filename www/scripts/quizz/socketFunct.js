@@ -29,6 +29,10 @@ socket.on('nextAnswer', function() {
     nextResponse();
 });
 
+socket.on('showScore', function() {
+    showScore();
+});
+
 socket.on('executecommand', function(data){
     var a = 'foo';
     commands[data.commandName](a);

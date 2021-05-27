@@ -5,6 +5,7 @@
 let sectionStart = document.getElementById('accueilQuizz');
 let sectionPlay = document.getElementById('gameQuizz');
 let sectionReponse = document.getElementById('reponseQuizz');
+let sectionScore = document.getElementById('scoreQuizz');
 let allSectionQuestion = sectionPlay.querySelectorAll('div');
 
 let buttonStart = sectionStart.querySelector('button');
@@ -91,6 +92,12 @@ let startDisplayResponse = () => {
     }
 };
 
+let showScore = () => {
+    console.log(allScore);
+    sectionReponse.classList.add('hidden');
+    sectionScore.classList.remove('hidden');
+}
+
 let downTimer = (x) => {
     if(x > 0){
         timer.textContent = x;
@@ -168,7 +175,9 @@ let nextResponse = () => {
     if(buttonValidate.classList.contains('true')){
         allScore[actualPlayer]++;
     }
-    console.log(allScore)
+    buttonValidate.classList.add('false');
+        buttonValidate.classList.remove('true');
+        buttonValidate.textContent = 'Faux';
     if(actualPlayer + 1 == numberPlayers){
         actualPlayer = 0;
         actualResponse++
@@ -176,7 +185,10 @@ let nextResponse = () => {
     else {
         actualPlayer++;
     }
-    if(quizz.questions[actualResponse].type == 1){
+    if(actualResponse == quizz.questions.length){
+        socket.emit('showScore');
+    }
+    else if(quizz.questions[actualResponse].type == 1){
         textResponse(quizz.questions[actualResponse])
         //socket.emit('textResponse', quizz.questions[actualResponse])
     }

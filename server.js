@@ -118,6 +118,9 @@ class ServerClass{
             socket.on('nextAnswer', () => {
                 io.emit('nextAnswer');
             });
+            socket.on('showScore', () => {
+                io.emit('showScore');
+            });
             socket.on('textResponse', (data) => {
                 io.emit('textResponse',data);
             });
