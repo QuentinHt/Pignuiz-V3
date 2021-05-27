@@ -10,13 +10,15 @@
     padding: 10px;
     text-align: center;
     height: calc(100% - 40px);
-    font-family: RocknRoll One
+    font-family: sans-serif
 }
 .quizz h1 {
-    text-align: left
+    text-align: left;
+    font-family: Rocknroll one
 }
 .quizz h2 {
-    text-align: center
+    text-align: center;
+    font-family: Rocknroll one
 }
 .quizz h3 {
     font-size: 1.5rem
@@ -24,7 +26,8 @@
 .quizz >  p {
     right: calc(2.5% + 10px );
     position: absolute;
-    font-size: 2rem
+    font-size: 2rem;
+    font-family: Rocknroll one
 }
 .quizz > div:not(.result, .listPlayers){
     height: calc(100% - 102px);

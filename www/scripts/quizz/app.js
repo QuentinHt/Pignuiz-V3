@@ -43,6 +43,7 @@ let containerScore = sectionScore.querySelector('.listScore');
 let containerTextResponse = response.querySelector('.text');
 let responseTextQ = containerTextResponse.querySelector('.q');
 let responseTextR = containerTextResponse.querySelector('.r');
+let responseTextRu = containerTextResponse.querySelector('.rU');
 
 // Response Petit bac
 let containerPetitBacResponse = response.querySelector('.petitBac');
@@ -69,10 +70,12 @@ let scoreWithPlayers = [];
 
 // Quizz functions
 
+// Show players names
 let connected = (nameData) => {
     sectionPlayers.innerHTML += `<h4>- ${nameData}</h4>`
 }
 
+// First question
 let startQuizz = () => {
     sectionStart.classList.add('hidden');
     sectionPlay.classList.remove('hidden');
@@ -88,6 +91,7 @@ let startQuizz = () => {
     downTimer(20);
 };
 
+// First response
 let startDisplayResponse = () => {
     beforeResponse.classList.add('hidden');
     response.classList.remove('hidden');
@@ -103,12 +107,14 @@ let startDisplayResponse = () => {
     }
 };
 
+// Init Score
 let showScore = () => {
     sectionReponse.classList.add('hidden');
     sectionScore.classList.remove('hidden');
     triScore();
 }
 
+// Winner first
 let triScore = () => {
     scoreWithPlayers = [];
     for(let i = 0; i < allScore.length; i++){
@@ -119,6 +125,7 @@ let triScore = () => {
     }));
 }
 
+// Show all score
 let displayScore = (data) => {
     containerScore.innerHTML = '';    
     for(let i = 0; i < data.length; i++){
@@ -128,6 +135,7 @@ let displayScore = (data) => {
     }
 }
 
+// Timer before change question
 let downTimer = (x) => {
     if(x > 0){
         timer.textContent = x;
@@ -148,11 +156,12 @@ let downTimer = (x) => {
             else if(quizz.questions[actualQuestion].type == 2){
                 petitBacQuestion(quizz.questions[actualQuestion]);
             }
-            downTimer(30);
+            downTimer(20);
         }
     }
 }
 
+// End quizz send all response
 let pushReponse = (type) => {
     if(type == 1){
         dataResponse.push(inputText.value)
@@ -166,12 +175,14 @@ let pushReponse = (type) => {
     }
 }
 
+// Reset questions containers
 let hiddenContainers = () => {
     allSectionQuestion.forEach(question => {
         question.classList.add('hidden');
     })
 }
 
+// Reset response containers
 let hiddenContainersResponse = () => {
     allSectionResponse.forEach(response => {
         response.classList.add('hidden');
@@ -179,6 +190,7 @@ let hiddenContainersResponse = () => {
 }
 
 // Function Questions
+// Question text
 let textQuestion = (q) => {
     hiddenContainers();
     containerText.classList.remove('hidden');
@@ -187,6 +199,7 @@ let textQuestion = (q) => {
     inputText.focus();
 }
 
+// Question petit bac
 let petitBacQuestion = (q) => {
     hiddenContainers();
     containerPetitBac.classList.remove('hidden');
@@ -201,6 +214,7 @@ let petitBacQuestion = (q) => {
 
 // Function responses
 
+// Show next response
 let nextResponse = () => {
     if(buttonValidate.classList.contains('true')){
         allScore[actualPlayer]++;
@@ -228,14 +242,17 @@ let nextResponse = () => {
     }
 }
 
+// Response question text
 let textResponse = (q) => {
     hiddenContainersResponse();
     containerTextResponse.classList.remove('hidden');
     responseTextQ.textContent = `Question ${actualResponse + 1} : ${q.question}`;
-    responseTextR.textContent = allResponse[actualPlayer][actualResponse + 1];
+    responseTextR.textContent = q.reponse;
+    responseTextRu.textContent = allResponse[actualPlayer][actualResponse + 1];
     responseName.textContent = allResponse[actualPlayer][0];
 }
 
+// Response question petit bac
 let petitBacResponse = (q) => {
     hiddenContainersResponse();
     containerPetitBacResponse.classList.remove('hidden');
@@ -247,6 +264,7 @@ let petitBacResponse = (q) => {
     }
 }
 
+// Button false/true
 let correct = () => {
     if(buttonValidate.textContent == 'Faux'){
         buttonValidate.classList.remove('false');
