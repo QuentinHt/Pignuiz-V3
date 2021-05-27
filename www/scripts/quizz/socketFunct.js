@@ -1,6 +1,3 @@
-const test = document.getElementById('test');
-
-
 socket.on('displayResult', function(response) {
     allResponse.push(response);
 });
@@ -8,6 +5,10 @@ socket.on('displayResult', function(response) {
 socket.on('startQuizz', function(response) {
     startQuizz();
 });
+
+socket.on('connected', function(data){
+    connected(data);
+})
 
 socket.on('startDisplayResponse', function(data) {
     startDisplayResponse();

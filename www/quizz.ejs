@@ -2,11 +2,14 @@
 <%- include('statics/header') -%>
 
 <main>
-	<section id="accueilQuizz">
-		<p><%- data.data.quizz.title %></p><br>
-		<p><%- data.data.quizz.theme %></p>
-		<button>Start Quizz</button>
-		<p id="name"><%- data.data.user.givenName %></p>
+	<section id="accueilQuizz" class="quizz">
+		<h1><%- data.data.quizz.title %></h1>
+		<h2>Thème : <%- data.data.quizz.theme %></h2>
+		<div class="listPlayers">
+			<h2>Joueurs : </h2>
+		</div>
+		<button class="start">Start Quizz</button>
+		<p id="name" class="hidden"><%- data.data.user.givenName %></p>
 	</section>
 	<section id="gameQuizz" class="quizz hidden">
 		<p id="timer"></p>

@@ -14,6 +14,8 @@ let timer = document.getElementById('timer');
 
 let name = document.getElementById('name');
 
+let sectionPlayers = sectionStart.querySelector('.listPlayers')
+
 // Question text
 let containerText = sectionPlay.querySelector('.text');
 let h2Text = containerText.querySelector('h3');
@@ -64,6 +66,10 @@ let allScore = [];
 let scoreWithPlayers = [];
 // Quizz functions
 
+let connected = (nameData) => {
+    sectionPlayers.innerHTML += `<h4>- ${nameData}</h4>`
+}
+
 let startQuizz = () => {
     sectionStart.classList.add('hidden');
     sectionPlay.classList.remove('hidden');
@@ -112,9 +118,9 @@ let triScore = () => {
 
 let displayScore = (data) => {
     containerScore.innerHTML = '';    
-    for(let i = 0; i < scoreWithPlayers.length; i++){
+    for(let i = 0; i < data.length; i++){
         containerScore.innerHTML += `
-            <div class='oneScore'>${i + 1}${i == 0 ? 'er' : 'ème'} : <span>${scoreWithPlayers[i].name}</span> avec <span>${scoreWithPlayers[i].score}</span> ${scoreWithPlayers[i].score < 2 ? 'point' : 'points'}</div>
+            <div class='oneScore'>${i + 1}${i == 0 ? 'er' : 'ème'} : <span>${data[i].name}</span> avec <span>${data[i].score}</span> ${data[i].score < 2 ? 'point' : 'points'}</div>
         `;
     }
 }
@@ -278,3 +284,5 @@ buttonValidate.addEventListener('click', () => {
 nextAnswer.addEventListener('click', () => {
     socket.emit('nextAnswer');
 });
+
+socket.emit('connected', name.textContent);
