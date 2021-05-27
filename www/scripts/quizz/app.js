@@ -56,6 +56,7 @@ let numberPlayers = 0;
 let dataResponse = [name.textContent];
 
 let allResponse = [];
+let allScore = [];
 // Quizz functions
 
 let startQuizz = () => {
@@ -76,11 +77,17 @@ let startQuizz = () => {
 let startDisplayResponse = () => {
     beforeResponse.classList.add('hidden');
     response.classList.remove('hidden');
+    numberPlayers = allResponse.length;
+    for(let i = 0; i<allResponse.length; i++){
+        allScore.push(0);
+    }
     if(quizz.questions[actualResponse].type == 1){
-        socket.emit('textResponse', quizz.questions[actualResponse])
+        textResponse(quizz.questions[actualResponse])
+        //socket.emit('textResponse', quizz.questions[actualResponse])
     }
     else if(quizz.questions[actualResponse].type == 2){
-        socket.emit('petitBacResponse', quizz.questions[actualResponse])
+        petitBacResponse(quizz.questions[actualResponse])
+        // socket.emit('petitBacResponse', quizz.questions[actualResponse])
     }
 };
 
@@ -158,11 +165,22 @@ let petitBacQuestion = (q) => {
 // Function responses
 
 let nextResponse = () => {
+    if(actualPlayer + 1 == numberPlayers){
+        actualPlayer = 0;
+        actualResponse++
+    }
+    else {
+        actualPlayer++;
+    }
+    console.log(actualPlayer);
+    console.log(actualResponse);
     if(quizz.questions[actualResponse].type == 1){
-        socket.emit('textResponse', quizz.questions[actualResponse])
+        textResponse(quizz.questions[actualResponse])
+        //socket.emit('textResponse', quizz.questions[actualResponse])
     }
     else if(quizz.questions[actualResponse].type == 2){
-        socket.emit('petitBacResponse', quizz.questions[actualResponse])
+        petitBacResponse(quizz.questions[actualResponse])
+        //socket.emit('petitBacResponse', quizz.questions[actualResponse])
     }
 }
 
@@ -172,13 +190,6 @@ let textResponse = (q) => {
     responseTextQ.textContent = `Question ${actualResponse + 1} : ${q.question}`;
     responseTextR.textContent = allResponse[actualPlayer][actualResponse + 1];
     responseName.textContent = allResponse[actualPlayer][0];
-    if(actualPlayer == numberPlayers){
-        actualPlayer = 0;
-        actualResponse++
-    }
-    else {
-        actualPlayer++;
-    }
 }
 
 let petitBacResponse = (q) => {
@@ -189,13 +200,6 @@ let petitBacResponse = (q) => {
     for(let i = 0; i < 5; i++){
         themeLabelResponse[i].textContent = q.theme[i];
         themeInputResponse[i].value = allResponse[actualPlayer][actualResponse + 1][i];
-    }
-    if(actualPlayer == numberPlayers){
-        actualPlayer = 0;
-        actualResponse++
-    }
-    else {
-        actualPlayer++;
     }
 }
 
